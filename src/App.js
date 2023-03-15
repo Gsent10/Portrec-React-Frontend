@@ -1,24 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import Homepage from './components/pages/Homepage';
+import Unit from './components/pages/Unit';
+import Wards from './components/pages/Wards';
+import Lga from './components/pages/Lga';
+import Upload from './components/pages/Upload';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/">
+        <Route index element={<Homepage />} />
+        <Route path="pollingunit">
+          <Route path=":unitId" element={<Unit />} />
+        </Route>
+        <Route path="/wards" element={<Wards />} />
+        <Route path="/lga" element={<Lga />} />
+        <Route path="/upload" element={<Upload />} />
+      </Route>
+    </Routes>
   );
 }
 
